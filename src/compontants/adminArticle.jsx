@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import ArticleDAO from "./Dao.js"
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { database } from './firebase.js';
-import { ref, set } from "firebase/database";
 import { storage } from './firebase.js'; // استيراد إعدادات Firebase
 import { ref as storageRef, uploadBytes, getDownloadURL,deleteObject } from 'firebase/storage';
 import ArticleBox from './articleBox.jsx';
