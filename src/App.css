@@ -543,39 +543,8 @@ i {
 }
 
 @media (max-width:900px) {
-    header {
-        height: 50px;
-    }
-    .logo img {
-        width: 60px;
-        height: 100%;
-        margin-left: 4px;
-    }
-    nav ul li a {
-        display: none;
-    }
-    .logo .company_name a {
-        font-size: 25px;
-        font-weight: 400
-    }
-    .content{
-        display: flex;
-        align-items: center;
-        background: rgb(241,126,17);
-        background: linear-gradient(180deg, rgba(241,126,17,1) 0%, rgba(170, 170, 170, 0.913) 100%);
-    }
-    .content::before{
-display: none;
-    }
-    .nameE {
-        font-size: 60px;
-    }
-    .nameA {
-        font-size: 30px;
-    }
-    .service {
-        height: max-content;
-    }
+
+
     .boxes {
         display: flex;
         flex-direction: column;
@@ -585,13 +554,10 @@ display: none;
         align-items: center;
     }
     .box{
-        max-width: 90%;
+        width: 90%;
     }
-    .who {
-        height: min-content;
-        align-self: center;
+    .editor {
+        width: 90%;
     }
-    .details {
-        flex-direction: column-reverse;
-    }
+
 }
