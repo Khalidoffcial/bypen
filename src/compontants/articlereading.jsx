@@ -6,7 +6,6 @@ import Top from './top';
 import { ref as storageRef, uploadBytes, getDownloadURL,deleteObject } from 'firebase/storage';
 import { storage } from './firebase'; // استيراد إعدادات Firebase
 import 'react-quill/dist/quill.snow.css'; // تضمين تنسيقات Quill
-import img from 'F:/tiar/tiar/src/compontants/421098210_222801950890615_800056585450224398_n.webp';
 
 const Articlereading = () => {
   const { articleId } = useParams();
