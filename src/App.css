@@ -559,5 +559,8 @@ i {
     .editor {
         width: 90%;
     }
+    .article_information{
+        width:97% ;
+    }
 
 }
