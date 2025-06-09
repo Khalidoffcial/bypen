@@ -11,17 +11,19 @@
     "@tinymce/tinymce-react": "^5.1.1",
     "axios": "^1.9.0",
     "ckbox": "^2.6.0",
+    "firebase": "^9.23.0",
     "framer-motion": "^12.12.1",
     "puppeteer": "^24.9.0",
     "quill": "^2.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.27.0",
     "react-scripts": "5.0.1",
+    "sitemap": "^8.0.0",
     "swiper": "^11.1.14",
-    "web-vitals": "^2.1.4",
-    "firebase": "^9.0.0"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

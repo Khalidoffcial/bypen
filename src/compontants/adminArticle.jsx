@@ -5,8 +5,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { storage } from './firebase.js'; // استيراد إعدادات Firebase
 import { ref as storageRef, uploadBytes, getDownloadURL,deleteObject } from 'firebase/storage';
 import ArticleBox from './articleBox.jsx';
-import updata from "./refresh-page-option.png";
-import remove from './remove.png';
+
 
 
 
@@ -67,6 +66,7 @@ const saveIMG= async(imgid)=>{
       const imageRef = storageRef(storage,`images/image${imgid}`);
       await uploadBytes(imageRef, Img);
       imageUrl = await getDownloadURL(imageRef);
+      console.log(imageUrl)
   }
   setImgUrl(imageUrl)
 }
@@ -89,14 +89,14 @@ const clearIMG=()=>{
 //update img
 const updateIMG=()=>{
   handleImageDelete(ID_selected); //delete img
-  saveIMG(ID_selected); //save img
   setImg(null);
-  clearIMG()
+  clearIMG();
+  saveIMG(ID_selected); //save img
 
 }
 // Function to save content to Firebase
 const SaveArticle = async () =>{
-  if(title && descrip && date && content && selectedType){
+  if(title && descrip && date && content  && selectedType){
     const newArticle = {
           id: articleId,
           title: title,
@@ -107,36 +107,38 @@ const SaveArticle = async () =>{
           type:selectedType
         }
         dao.saveArticle(newArticle);
-        saveIMG(articleId) //save img
-        setTitle("")
-        setDescrip("")
-        setDate("")
-        setContent("")
-        setImgUrl('')
-        clearIMG()
+        saveIMG(articleId); //save img;
+        setTitle("");
+        setDescrip("");
+        setDate("");
+        setContent("");
+        setImgUrl('');
+        clearIMG();
     }
   }
 
-  const handleToUpdate =(e)=>{
-    e.preventDefault();
+  const handleToUpdate =(id)=>{
     setUpdated(true);
-    dao.getArticleID(ID_selected).then((data)=>{
+    console.log(id);
+    
+    dao.getArticleID(id).then((data)=>{
       setTitle(data.title)
       setDescrip(data.descrip)
       setDate(data.date)
       setContent(data.content)
-      console.log(ID_selected)
-      console.log(data)
+      console.log(id)
+      console.log(data);
+      SetId('')
     })
     // dao.updateArticle(ID_selected)
-
   }
 
     // delete article
-  const handleRemove =(e)=>{
-    e.preventDefault();
-  dao.deleteArticle(ID_selected);
-  handleImageDelete(ID_selected) //delete img
+  const handleRemove =(id)=>{
+  dao.deleteArticle(id);
+  handleImageDelete(id); //delete img
+  SetId('')
+
 
   }
   const UpdateِArticleToDatabase =(e)=>{
@@ -223,8 +225,6 @@ const editorConfiguration = {
 //   }
   
  
-  
-  
 
 // async function translateText(text) {
 //   try {
@@ -333,14 +333,8 @@ const editorConfiguration = {
 
 
 <ArticleBox 
-  Buttons={
-    <div className='button_mange'>
-      <div className="updateArticle" onClick={handleToUpdate}><img src={updata} /></div>
-      <div className="removeArticle" onClick={handleRemove}><img src={remove} /></div>
-    </div>
-  }
-  idItem={(e)=>{SetId(e)}
-  }
+  Prop_handleRemove={ (id)=>{handleRemove(id)}}
+  Prop_handleToUpdate={(id)=>{handleToUpdate(id)}}
 />  
   </>
   );
