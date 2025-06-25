@@ -106,6 +106,7 @@ console.log(filter);
         <div className="boxes" dir='rtl'>
           {filteredArticles.length ? (
             filteredArticles.map((item) => (
+              <Link to={`/articles/${item.id}`} className='hyperlinkBox'>
               <div className="box" key={item.id}>
                 <div className="TopBox">
                   {imageUrls[`image${item.id}`] ? (
@@ -119,11 +120,11 @@ console.log(filter);
                   )}
                 </div>
                 <div className='BottomBox'>
-                  <Link to={`/articles/${item.id}`}>
+                  
                     <h1>{item.title}</h1>
                     <h4 className='description'>{item.descrip}</h4>
                     <p className='history'>{item.date}</p>
-                  </Link>
+                  
                   {(Prop_handleToUpdate || Prop_handleRemove) && (
                     <div className='button_mange'>
                       {Prop_handleToUpdate && (
@@ -140,6 +141,7 @@ console.log(filter);
                   )}
                 </div>
               </div>
+              </Link>
             ))
           ) : (
             <div className='parentDontfound'>
