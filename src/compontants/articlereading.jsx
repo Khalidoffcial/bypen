@@ -8,7 +8,7 @@ import { storage } from './firebase.js';
 import 'react-quill/dist/quill.snow.css';
 import SocialShare from "./SocialShare.jsx";
 import { Helmet } from 'react-helmet-async'; // ✅ استيراد Helmet
-import InfolinksAd from './adsense.jsx'; // حسب مكان تخزين الملف
+import PropellerAd from './adsense.jsx'; // حسب مكان تخزين الملف
 
 
 const Articlereading = () => {
@@ -77,8 +77,8 @@ const Articlereading = () => {
       </Helmet>
 
       <Top />
+      <PropellerAd />
       <div className="w"></div>
-
       <button className="back" onClick={handleback}>
         <h1>رجوع</h1>
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
