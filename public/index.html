@@ -1,49 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="./cropped_image.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/cropped_image.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zain:wght@200;300;400;700;800;900&display=swap" rel="stylesheet">
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="icon" href="../src/image/cropped_image.ico" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="theme-color" content="#ffffff" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    <!-- 🟢 وصف مخصص لتحسين نتائج البحث -->
+    <meta name="description" content="ByPen موقع غني بالمقالات والروايات والمحتوى التعليمي باللغة العربية، يساعدك على تطوير نفسك واكتساب المعرفة بطريقة ممتعة." />
+    
+    <!-- 🟢 كلمات مفتاحية للبحث -->
+    <meta name="keywords" content="مقالات, روايات, تعليم, تعلم, تطوير الذات, علوم, تقنية, ريادة أعمال, بالعربي, قصص عربية, تعلم الإنجليزية" />
+    
+    <!-- 🟢 اسم الكاتب أو الموقع -->
+    <meta name="author" content="ByPen Team" />
+
+    <!-- 🟢 بيانات Open Graph (لتحسين المشاركة على فيسبوك وغيرها) -->
+    <meta property="og:title" content="ByPen | منصة المقالات والروايات والتعليم العربي" />
+    <meta property="og:description" content="مقالات عربية تعليمية وثقافية وروايات مشوقة تناسب جميع المستويات. اكتشف أفضل محتوى عربي الآن!" />
+    <meta property="og:image" content="./cropped_image.ico" />
+    <meta property="og:url" content="https://bypen.vercel.app/" />
+    <meta property="og:type" content="website" />
+
+    <!-- 🟢 Google Structured Data (مقالات) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ByPen",
+      "url": "https://bypen.vercel.app/",
+      "description": "ByPen منصة للمقالات والروايات والتعليم الذاتي باللغة العربية",
+      "inLanguage": "ar",
+      "publisher": {
+        "@type": "Organization",
+        "name": "ByPen"
+      }
+    }
+    </script>
+
+    <!-- 🟢 Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Zain:wght@200;300;400;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- 🟢 موقع الإعلانات monetag وغيره -->
+    <meta name="monetag" content="c097fc113e41d73a9a6b6ac2bd69acd2" />
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-    <title>Bypen</title>
+    <title>ByPen | مقالات، روايات، وتعليم عربي</title>
   </head>
   <body dir="rtl">
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>يجب تفعيل JavaScript لتشغيل هذا التطبيق.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
