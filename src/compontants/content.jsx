@@ -1,16 +1,14 @@
 import React from 'react';
-import Top from './top';
-import Article from './article';
-import ArabicQuote from './quotesApi.jsx';
+import ArticleBox from './articleBox.jsx';
 import QuoteSlider from "./wise.jsx"
 
 
 const content = () => {
   return (<>
-      <Top />
-      {/* <ArabicQuote /> */}
+  <div className="content">
       <QuoteSlider/>
-      <Article />
+      <ArticleBox />
+  </div>
   </>
   )
 }

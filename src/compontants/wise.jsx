@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as framer from "framer-motion";
 import quotes from "../wisdom/wisdoms1.json";
-import img1 from '../image/1.jpg';
-import img2 from '../image/2.jpg';
-import img3 from '../image/3.jpg';
+
 import img4 from '../image/4.jpg';
 // import img5 from '../image/5.jpg';
 import img6 from '../image/6.jpg';
@@ -22,9 +20,7 @@ export default function QuoteSlider() {
 
 
   const images = [
-    img1,
-    img2,
-    img3,
+
     img4,
     // img5,
     img6,

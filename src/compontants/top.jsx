@@ -10,7 +10,6 @@ import { emit,on, off  } from './eventBus';
 
 const Top = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [submittedSearch, setSubmittedSearch] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();

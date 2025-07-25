@@ -1,23 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import Top from "./top.jsx";
 import ArticleDAO from './Dao.js';
+import Sidebar from './sidebar.jsx';
 import { Link } from 'react-router-dom';
 import { storage } from './firebase';
 import { ref as storageRef, getDownloadURL, listAll } from 'firebase/storage';
-import updata from "./refresh-page-option.png";
-import remove from './remove.png';
-import { article } from 'framer-motion/client';
+import { useParams, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import PropellerAd from './adsense.jsx';
+import PushBannerAd from './PushBannerAd.jsx';
+import InterstitialAd from './InterstitialAd.jsx';
+import VignetteAd from './VignetteAd.jsx';
+
 import { on, off } from './eventBus';
 
 
-const ArticleBox = (props) => {
-  const { isTop, isMore, Prop_handleToUpdate, Prop_handleRemove } = props;
+const ArticleBox = () => {
+    const { typeArticle } = useParams();
   const [DataArticle, SetdataArticle] = useState([]);
   const [filteredArticles, set_filteredArticles] = useState(DataArticle);
   const [imageUrls, setImageUrls] = useState({});
   const [isback, setBack] = useState(false);
-
   const [filter, SetFilter] = useState('');
+
+  const location = useLocation();
+  const isHome = location.pathname === "/";  // أو "/home"
+  const dynamicClass = isHome ? "home" : "other";
 
   const handleValue = (data) => SetFilter(data);
   useEffect(() => {
@@ -71,10 +79,12 @@ const ArticleBox = (props) => {
     fetchImages();
   }, []);
 
+
+
+
   useEffect(() => {
     if (filter) {
       console.log(filter);
-  
       const filtered = DataArticle.filter(article =>
         (article.title && article.title.toLowerCase().includes(filter.toLowerCase())) ||
         (article.content && article.content.toLowerCase().includes(filter.toLowerCase())) ||
@@ -84,18 +94,44 @@ const ArticleBox = (props) => {
       set_filteredArticles(filtered);
       setBack(true);
     } else {
-      set_filteredArticles(DataArticle); // عرض كل المقالات عند عدم وجود فلتر
+      
+      const filteredArticles = DataArticle.filter(article =>
+        article.type?.includes(typeArticle)
+      );
+      
+      set_filteredArticles(filteredArticles);
     }
   }, [filter,DataArticle]);
   
 console.log(filteredArticles);
 console.log(filter);
+useEffect(()=>{
+  if (!typeArticle || typeof(typeArticle) == "undefined") {
+    console.log(DataArticle);
+    set_filteredArticles(DataArticle);
+  
+    console.log("dont there the type article");
+  console.log(typeArticle);
+  };
+},[DataArticle])
+
+const capitalizeFirstLetter = (word) => {
+  if (!word) return '';
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+};
+
 
   return (
     <>
-      {isTop && <Top />}
-      <div className="service">
-        <h1 className="address1">مقالات</h1>
+    <PropellerAd />
+    {/* <PushBannerAd />
+    <InterstitialAd />
+    <VignetteAd /> */}
+    
+    <Top></Top>
+    <Sidebar></Sidebar>
+      <div className={`service_${dynamicClass}`}>
+        <h1 className="address1">{capitalizeFirstLetter(typeArticle)}</h1>
         {isback?(
           <button className="back" onClick={handleDelete}>
               <h1>رجوع</h1>
@@ -106,7 +142,7 @@ console.log(filter);
         <div className="boxes" dir='rtl'>
           {filteredArticles.length ? (
             filteredArticles.map((item) => (
-              <Link to={`/articles/${item.id}`} className='hyperlinkBox'>
+              <Link to={`/Articles/${item.id}`} className='hyperlinkBox'>
               <div className="box" key={item.id}>
                 <div className="TopBox">
                   {imageUrls[`image${item.id}`] ? (
@@ -116,7 +152,7 @@ console.log(filter);
                       style={{ width: '100%', maxWidth: '500px' }}
                     />
                   ) : (
-                    <p>No image available</p>
+                    null
                   )}
                 </div>
                 <div className='BottomBox'>
@@ -125,7 +161,7 @@ console.log(filter);
                     <h4 className='description'>{item.descrip}</h4>
                     <p className='history'>{item.date}</p>
                   
-                  {(Prop_handleToUpdate || Prop_handleRemove) && (
+                  {/* {(Prop_handleToUpdate || Prop_handleRemove) && (
                     <div className='button_mange'>
                       {Prop_handleToUpdate && (
                         <div className="updateArticle" onClick={() => { Prop_handleToUpdate(item.id); }}>
@@ -138,7 +174,7 @@ console.log(filter);
                         </div>
                       )}
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
               </Link>
@@ -149,11 +185,6 @@ console.log(filter);
             </div>
           )}
         </div>
-        {isMore && DataArticle.length >= 6 && (
-          <Link to="/articles">
-            <div className="more">المزيد من المقالات</div>
-          </Link>
-        )}
       </div>
     </>
   );
